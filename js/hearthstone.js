@@ -4,20 +4,26 @@ function hearthstoneCard() {
 
 }
 
+function shuffleArray(array) {
+    for(var i = array.length - 1; i > 0; i--) {
+        var j = Math.floor(Math.random() * (i + 1));
+        console.log(i);
+        console.log(j);
+        var temp = array[i];
+        console.log(temp);
+        array[i] = array[j];
+        array[j] = temp;
+    }
+    console.log("truffle shuffle", array);
+    return array;
+  }
+
+
+
 hearthstoneCard.prototype.getCards = function(size) {
 
   return shuffleArray(cards);
 };
-
-function shuffleArray(array) {
-    for (var i = array.length - 1; i > 0; i--) {
-        var j = Math.floor(Math.random() * (i + 1));
-        var temp = array[i];
-        array[i] = array[j];
-        array[j] = temp;
-    }
-    return array;
-}
 
 hearthstoneCard.prototype.getImg = function() {
   // var number = (Math.floor(Math.random() * 192)+1);
@@ -34,7 +40,7 @@ hearthstoneCard.prototype.getImg = function() {
     cards.push("<img src='"+result.body[number].imgGold+"'>");
   }
 });
-  return cards;
+    return shuffleArray(cards);
 
 };
 
